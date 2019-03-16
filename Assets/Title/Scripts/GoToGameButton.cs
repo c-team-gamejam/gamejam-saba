@@ -16,4 +16,5 @@ public class GoToGameButton : MonoBehaviour
     {
         sceneFader.FadeOut(SceneFader.SceneTitle.StoryScene, fadingTime);
     }
+    
 }

@@ -124,11 +124,9 @@ public class SceneFader : MonoSingleton<SceneFader>
     /// </summary>
     public enum SceneTitle
     {
-        Battle,
-        Title,
-        Story,
-        Home,
-        StorySelect,
-        Strengthen,
+        TitleScene,
+        GameScene,
+        GalleryScene,
+        StoryScene,
     }
 }

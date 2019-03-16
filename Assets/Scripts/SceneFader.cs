@@ -68,7 +68,6 @@ public class SceneFader : MonoSingleton<SceneFader>
         {
             m_fadeTime = fadeTime;
         }
-        m_fadeCanvas.enabled = true;
         m_nextSceneTitle = sceneTitle.ToString();
         StartCoroutine(FadingOut());
     }
@@ -102,6 +101,8 @@ public class SceneFader : MonoSingleton<SceneFader>
         {
             Init();
         }
+        m_fadeCanvas.enabled = true;
+
         while (m_alpha < 1f)
         {
             m_alpha += Time.deltaTime / m_fadeTime;

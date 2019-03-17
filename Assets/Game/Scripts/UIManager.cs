@@ -8,6 +8,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text progressTextBox;
     [SerializeField] Text ClearTextBox;
 
+    private void Start()
+    {
+        ClearTextBox.enabled = false;
+    }
+
     public void SyncProgress(float requiredDHA, float currentDHA)
     {
         var percentage = currentDHA / requiredDHA;
@@ -17,6 +22,6 @@ public class UIManager : MonoBehaviour
 
     public void DisplayClearText()
     {
-
+        ClearTextBox.enabled = true;
     }
 }

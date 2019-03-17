@@ -406,7 +406,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1499860553310932, guid: e3757bcc09ded5b49aaf1277db7a0c78, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3757bcc09ded5b49aaf1277db7a0c78, type: 2}
@@ -493,7 +493,7 @@ Prefab:
     - target: {fileID: 114003365245855496, guid: e53d11d25ab14f94587275a4edc86a5a,
         type: 2}
       propertyPath: spawnLate
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e53d11d25ab14f94587275a4edc86a5a, type: 2}
@@ -553,6 +553,11 @@ Prefab:
       propertyPath: uIManager
       value: 
       objectReference: {fileID: 1658922094}
+    - target: {fileID: 114481404177346356, guid: bd64c819f0ab82c4887607cb804d3b58,
+        type: 2}
+      propertyPath: ClearTextBox
+      value: 
+      objectReference: {fileID: 26673962}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd64c819f0ab82c4887607cb804d3b58, type: 2}
   m_IsPrefabAsset: 0

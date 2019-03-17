@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 [CreateAssetMenu]
@@ -15,6 +16,11 @@ public class ChapterData : ScriptableObject
         public Chapter Title ;
         public float RequiredDHA;
         [TextArea(1,5)] public List<string> TextResourses;
+        [TextArea(1,5)] public List<string> YesPatternText;
+        [TextArea(1,5)] public List<string> NoPatternText;
+        public Image StageBackground;
+        public Image Storybackground;
+        public Image Saba;
     }
 }
 

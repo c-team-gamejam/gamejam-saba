@@ -181,3 +181,11 @@ public class SaveData : ISerializationCallbackReceiver
     }
 
 }
+
+[Flags]
+public enum ClearFrag
+{
+    BadEnd =1 ,
+    NormalEnd  =2,
+    TrueEnd  = 4,
+}

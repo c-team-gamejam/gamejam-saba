@@ -14,12 +14,43 @@ public class GameManager : MonoSingleton<GameManager>
     }
     public Chapter currentChapter { get; set; }
 
+
     [SerializeField] ChapterData chapterData;
+
+    int GoodCount;
+    int BadCount;
+
+    public void AddPatternCount(Pattern pattern)
+    {
+        switch (pattern)
+        {
+            case Pattern.Good:
+                GoodCount++;
+                break;
+            case Pattern.Bad:
+                BadCount++;
+                break;
+            default:
+                break;
+        }
+    }
 
     private void Awake()
     {
-        SceneManager.sceneLoaded += ((scene, mode) => {
+        SceneManager.sceneLoaded += ((scene, mode) =>
+        {
             SceneFader.Instance.FadeIn(1f);
         });
     }
+
+    public override void OnInitialize()
+    {
+        base.OnInitialize();
+        DontDestroyOnLoad(gameObject);
+    }
+}
+public enum Pattern
+{
+    Good,
+    Bad,
 }

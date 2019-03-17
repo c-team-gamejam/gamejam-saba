@@ -9,6 +9,9 @@ public class Message : MonoBehaviour
 
     [SerializeField]
     GameObject image;
+
+    ButtonScript buttonScript;
+
     //　メッセージUI
     private Text messageText;
     //　表示するメッセージ
@@ -40,8 +43,7 @@ public class Message : MonoBehaviour
     //　メッセージをすべて表示したかどうか
     private bool isEndMessage = false;
 
-    private bool yesPttaern = false;
-    private bool noPttaern = false;
+   
 
     GameManager gameManager;
     ChapterData chapterData;
@@ -83,40 +85,23 @@ public class Message : MonoBehaviour
                 return false;
             });
         }
-        if (yesPttaern)
-        {
-            foreach (var yes in yesPattern)
-            {
-                SetMessagePanel(yes);
-                yield return new WaitUntil(() =>
-                {
-                    if (isEndMessage)
-                    {
-                        Debug.Log("true");
-                        return true;
-                    }
-                    Debug.Log("false");
-                    return false;
-                });
-            }
+    }
 
-        }
-        if (noPttaern)
+    public IEnumerator EachPatternDiplay(Pattern pattern)
+    {
+        foreach (var no in noPattern)
         {
-            foreach (var no in noPattern)
+            SetMessagePanel(no);
+            yield return new WaitUntil(() =>
             {
-                SetMessagePanel(no);
-                yield return new WaitUntil(() =>
+                if (isEndMessage)
                 {
-                    if (isEndMessage)
-                    {
-                        Debug.Log("true");
-                        return true;
-                    }
-                    Debug.Log("false");
-                    return false;
-                });
-            }
+                    Debug.Log("true");
+                    return true;
+                }
+                Debug.Log("false");
+                return false;
+            });
         }
     }
 
@@ -126,19 +111,12 @@ public class Message : MonoBehaviour
         return false;
     }
 
-   public void YesButton()
-    {
-        yesPttaern = true;
-    }
-
-   public void NoButton()
-    {
-        noPttaern = true;
-    }
+  
 
 
    public void Start()
     {
+
         StartCoroutine(DisplayText());
 
     }

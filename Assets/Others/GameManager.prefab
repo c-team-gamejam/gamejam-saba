@@ -66,4 +66,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61d569008d4a9d446a84c383a24cf03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chapterData: {fileID: 11400000, guid: c351316a0e8dac949a08e8121cb19afc, type: 2}
+  chapterData: {fileID: 11400000, guid: 8cc071fe0e38de244b4d216e5df4c226, type: 2}

@@ -15,7 +15,7 @@ public class GalleryDateLoad : MonoBehaviour {
 	
 	// Update is called once per frame
 	public int Loader () {
-        var MyFlag;
+        //var MyFlag;
         return flagScore;
 	}
 

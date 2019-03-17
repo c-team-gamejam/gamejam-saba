@@ -122,12 +122,13 @@ public class StageManager : MonoSingleton<StageManager>
     {
         saveData = SaveData.Instance;
         gameManager.currentChapter = saveData.ChapterProgress;
-        var chapter = chapterData.ChapterDataList.Find(data => data.Title == gameManager.currentChapter);
+        var chapter = gameManager.ChapterData.ChapterDataList.Find(data => data.Title == gameManager.currentChapter);
         requiredDHA = chapter.RequiredDHA;
         currentDHA = saveData.currentDHA;
 
         var sabaObject = chapter.Saba;
-        Instantiate(sabaObject, sabaPosition.transform);
+        var go = Instantiate(sabaObject, sabaPosition.transform);
+        go.transform.localPosition = Vector3.zero;
 
         bGM.Play();
         // event call

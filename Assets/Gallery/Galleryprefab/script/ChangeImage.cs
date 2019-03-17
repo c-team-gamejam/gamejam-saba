@@ -5,15 +5,37 @@ using UnityEngine.UI;
 public class ChangeImage : MonoBehaviour {
     Image image;
     Color color;
+    [SerializeField]
+    GalleryDateLoad galleryload;
+    [SerializeField]
+    Image Image1;
+    [SerializeField]
+    Image Image2;
+    [SerializeField]
+    Image Image3;
 	// Use this for initialization
 	void Start () {
-        image=GetComponent<Image>();
+        
         color = new Color(1,1,1,1);
+      
 	}
+    private void Update()
+    {
+        if (galleryload.Trueend)
+        {
+            Image1.color = color;
+        }
+        if (galleryload.Normalend)
+        {
+            Image2.color = color;
+        }
+        if (galleryload.Badend)
+        {
+            Image3.color = color;
+        }
+
+    }
 
     // Update is called once per frame
-    public void changeColor()
-    {
-        image.color = color;
-    }
+
 }

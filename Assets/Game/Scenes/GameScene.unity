@@ -193,6 +193,48 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224256326911683054, guid: e3757bcc09ded5b49aaf1277db7a0c78,
     type: 2}
   m_PrefabInternal: {fileID: 1244169039}
+--- !u!1001 &481097525
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4141592835680684, guid: 604aaa14314706f48b086dc655cf7254, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 412.47745
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141592835680684, guid: 604aaa14314706f48b086dc655cf7254, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 813.7186
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141592835680684, guid: 604aaa14314706f48b086dc655cf7254, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141592835680684, guid: 604aaa14314706f48b086dc655cf7254, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141592835680684, guid: 604aaa14314706f48b086dc655cf7254, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141592835680684, guid: 604aaa14314706f48b086dc655cf7254, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141592835680684, guid: 604aaa14314706f48b086dc655cf7254, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141592835680684, guid: 604aaa14314706f48b086dc655cf7254, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 604aaa14314706f48b086dc655cf7254, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &512944782
 Prefab:
   m_ObjectHideFlags: 0
@@ -498,12 +540,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e53d11d25ab14f94587275a4edc86a5a, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &1658922094 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114481404177346356, guid: bd64c819f0ab82c4887607cb804d3b58,
-    type: 2}
-  m_PrefabInternal: {fileID: 1734762470}
-  m_Script: {fileID: 11500000, guid: 7621e9a2db2775b4f9e98cfb41e0d3f4, type: 3}
 --- !u!1001 &1734762470
 Prefab:
   m_ObjectHideFlags: 0
@@ -543,16 +579,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1678116213476670, guid: bd64c819f0ab82c4887607cb804d3b58, type: 2}
+      propertyPath: m_Name
+      value: StageManager
+      objectReference: {fileID: 0}
     - target: {fileID: 114481404177346356, guid: bd64c819f0ab82c4887607cb804d3b58,
         type: 2}
       propertyPath: progressTextBox
       value: 
       objectReference: {fileID: 730106241}
-    - target: {fileID: 114401808825663414, guid: bd64c819f0ab82c4887607cb804d3b58,
-        type: 2}
-      propertyPath: uIManager
-      value: 
-      objectReference: {fileID: 1658922094}
     - target: {fileID: 114481404177346356, guid: bd64c819f0ab82c4887607cb804d3b58,
         type: 2}
       propertyPath: ClearTextBox

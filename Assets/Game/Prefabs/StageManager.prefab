@@ -55,6 +55,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chapterData: {fileID: 11400000, guid: c351316a0e8dac949a08e8121cb19afc, type: 2}
   uIManager: {fileID: 114481404177346356}
+  bGM: {fileID: 0}
+  delayTime: 2
+  fadingTime: 0.5
 --- !u!114 &114481404177346356
 MonoBehaviour:
   m_ObjectHideFlags: 1

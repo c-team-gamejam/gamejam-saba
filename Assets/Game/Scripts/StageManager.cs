@@ -14,7 +14,7 @@ public class StageManager : MonoSingleton<StageManager>
     [SerializeField] ChapterData chapterData;
     [SerializeField] UIManager uIManager;
     [SerializeField] AudioSource bGM;
-    [SerializeField] GameObject sabaPosition; 
+    [SerializeField] GameObject sabaPosition;
 
     [Header("Parameters")]
     [SerializeField] float delayTime = 2f;
@@ -125,6 +125,10 @@ public class StageManager : MonoSingleton<StageManager>
         var chapter = chapterData.ChapterDataList.Find(data => data.Title == gameManager.currentChapter);
         requiredDHA = chapter.RequiredDHA;
         currentDHA = saveData.currentDHA;
+
+        var sabaObject = chapter.Saba;
+        Instantiate(sabaObject, sabaPosition.transform);
+
         bGM.Play();
         // event call
         stateManager.TransitionState(StateManager.StateMachine.State.InTheGame);

@@ -15,7 +15,7 @@ public class StageManager : MonoSingleton<StageManager>
 
     [Header("Parameters")]
     [SerializeField] float delayTime = 2f;
-    [SerializeField] float fadingTime = 5f;
+    [SerializeField] float fadingTime = .5f;
 
 
     float requiredDHA;

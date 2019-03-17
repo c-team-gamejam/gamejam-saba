@@ -64,7 +64,7 @@ public class TouchGestureDetector : MonoSingleton<TouchGestureDetector>
         SceneManager.sceneLoaded += (scene, sceneMode) =>
         {
             onGestureDetected.RemoveAllListeners(); //listenerをリセット
-            };
+        };
 
         if (null == ShootingCamera) // カメラオブジェクトがnullの場合メインカメラを代入する
         {

@@ -15,25 +15,72 @@ MonoBehaviour:
   - Title: 0
     RequiredDHA: 50
     TextResourses:
-    - "\u304A\uFF1B\u3042\uFF53\uFF44\uFF46\uFF1B\u304A\u3044\n\n\u3042\uFF53\u3062\u3058\u3087\u3044\uFF53\uFF44\uFF4A\n\u3042\uFF53\u3062\u3058\uFF44\uFF4A\n\u3042\uFF4A\u3042\n\u3042\n"
+    - "[\u732B\u793E\u9577]\n\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\n\u3042\u3042\u3042\u3042\u3042\u3042\u3002\n"
     - "\uFF53\uFF44\u3075\u3043\u3058\u3087\u3044\uFF53\uFF44\uFF4A\uFF1B\u3042\u304A\u3055\uFF44\uFF46\n\t"
     - "\u3042\uFF53\u3062\uFF4A\u3075\u3041\uFF1B\u304A\u3057\uFF44\uFF4A"
     - "\uFF53\uFF50\uFF44\uFF4A\u3075\u3049\u3055\u3044\uFF44\uFF4A\uFF46"
     - "\u3055\uFF44\uFF4B\uFF46\uFF1B\uFF4C\uFF4B\uFF4A"
-    - "\u304A\uFF1B\u3057\u3042\uFF44\uFF4A\uFF46\uFF1B\u304A\u3044"
-    - 
-    - 
-    - 
-    - 
+    YesPatternText:
+    - jshadgsbn
+    - iyefbdnmsi
+    - 'acmmxzbfuew
+
+      aaaaaa'
+    NoPatternText:
+    - dadadadadadada
+    - 'dadsfsacxzvgsff
+
+      vxdsfdgxdfsfsd
+
+'
+    StageBackground: {fileID: 0}
+    Storybackground: {fileID: 0}
+    Saba: {fileID: 0}
   - Title: 1
     RequiredDHA: 0
     TextResourses: []
+    YesPatternText: []
+    NoPatternText: []
+    StageBackground: {fileID: 0}
+    Storybackground: {fileID: 0}
+    Saba: {fileID: 0}
   - Title: 2
     RequiredDHA: 0
     TextResourses: []
+    YesPatternText: []
+    NoPatternText: []
+    StageBackground: {fileID: 0}
+    Storybackground: {fileID: 0}
+    Saba: {fileID: 0}
   - Title: 3
     RequiredDHA: 0
     TextResourses: []
+    YesPatternText: []
+    NoPatternText: []
+    StageBackground: {fileID: 0}
+    Storybackground: {fileID: 0}
+    Saba: {fileID: 0}
   - Title: 4
     RequiredDHA: 0
     TextResourses: []
+    YesPatternText: []
+    NoPatternText: []
+    StageBackground: {fileID: 0}
+    Storybackground: {fileID: 0}
+    Saba: {fileID: 0}
+  - Title: 4
+    RequiredDHA: 0
+    TextResourses: []
+    YesPatternText: []
+    NoPatternText: []
+    StageBackground: {fileID: 0}
+    Storybackground: {fileID: 0}
+    Saba: {fileID: 0}
+  - Title: 4
+    RequiredDHA: 0
+    TextResourses: []
+    YesPatternText: []
+    NoPatternText: []
+    StageBackground: {fileID: 0}
+    Storybackground: {fileID: 0}
+    Saba: {fileID: 0}

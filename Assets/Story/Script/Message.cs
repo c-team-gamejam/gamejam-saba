@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
+using System;
+using System.Linq;
+using System.Collections.Generic;
 public class Message : MonoBehaviour
 {
 
+    [SerializeField]
+    GameObject image;
     //　メッセージUI
     private Text messageText;
     //　表示するメッセージ
@@ -36,26 +40,109 @@ public class Message : MonoBehaviour
     //　メッセージをすべて表示したかどうか
     private bool isEndMessage = false;
 
-    void Start()
+    private bool yesPttaern = false;
+    private bool noPttaern = false;
+
+    GameManager gameManager;
+    ChapterData chapterData;
+    ChapterData.ChapterInfo textList;
+    private List<string> textScripts;
+    private List<string> yesPattern;
+    private List<string> noPattern;
+    IEnumerator DisplayText()
     {
-        clickIcon = transform.Find("Panel/Image").GetComponent<Image>();
+
+         gameManager = GameManager.Instance;
+         chapterData = gameManager.ChapterData;
+         textList = chapterData.ChapterDataList.Find((chapter) => chapter.Title == gameManager.currentChapter);
+         textScripts = textList.TextResourses;
+         yesPattern = textList.YesPatternText;
+         noPattern = textList.NoPatternText;
+
+        clickIcon = image.GetComponent<Image>();
         clickIcon.enabled = false;
         messageText = GetComponentInChildren<Text>();
         messageText.text = "";
-        SetMessage("あああああああああああああああああああああああああああああああああああああああああああああああああ\n"
-            //+ "ああああああああああああああああああああああああああああああああああああああああ\n"
-            //+ "あああああああああああああああああああああああああああああああああ\n"
-            //+ "あああああああああああああああああああああああああああああああああああああああああああああああああああ\n"
-            //+ "あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ"
-            //+ "あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ"
-            //+ "あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ"
-            //+ "あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ"
-            //+ "あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ"
+        //SetMessage
+        //(
+        // textScripts[0]
+        //);
 
-        );
+        foreach (var text in textScripts)
+        {
+            SetMessagePanel(text);
+
+            yield return new WaitUntil(() =>
+            {
+                if (isEndMessage)
+                {
+                    Debug.Log("true");
+                    return true;
+                }
+                Debug.Log("false");
+                return false;
+            });
+        }
+        if (yesPttaern)
+        {
+            foreach (var yes in yesPattern)
+            {
+                SetMessagePanel(yes);
+                yield return new WaitUntil(() =>
+                {
+                    if (isEndMessage)
+                    {
+                        Debug.Log("true");
+                        return true;
+                    }
+                    Debug.Log("false");
+                    return false;
+                });
+            }
+
+        }
+        if (noPttaern)
+        {
+            foreach (var no in noPattern)
+            {
+                SetMessagePanel(no);
+                yield return new WaitUntil(() =>
+                {
+                    if (isEndMessage)
+                    {
+                        Debug.Log("true");
+                        return true;
+                    }
+                    Debug.Log("false");
+                    return false;
+                });
+            }
+        }
     }
 
-    void Update()
+    bool Flag()
+    {
+
+        return false;
+    }
+
+   public void YesButton()
+    {
+        yesPttaern = true;
+    }
+
+   public void NoButton()
+    {
+        noPttaern = true;
+    }
+
+
+   public void Start()
+    {
+        StartCoroutine(DisplayText());
+
+    }
+   public void Update()
     {
         //　メッセージが終わっていない、または設定されている
         if (isEndMessage || message == null)
@@ -140,12 +227,13 @@ public class Message : MonoBehaviour
                 textLength = 0;
                 isOneMessage = false;
 
+
                 //　メッセージが全部表示されていたらゲームオブジェクト自体の削除
                 if (nowTextNum >= message.Length)
                 {
                     nowTextNum = 0;
                     isEndMessage = true;
-                    //transform.GetChild(0).gameObject.SetActive(false);
+                    // transform.GetChild(0).gameObject.SetActive(false);
                     //　それ以外はテキスト処理関連を初期化して次の文字から表示させる
                 }
             }

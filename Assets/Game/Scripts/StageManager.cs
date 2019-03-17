@@ -20,7 +20,7 @@ public class StageManager : MonoSingleton<StageManager>
     [SerializeField] float delayTime = 2f;
     [SerializeField] float fadingTime = .5f;
 
-
+    GameObject saba;
     float requiredDHA;
     float currentDHA;
 

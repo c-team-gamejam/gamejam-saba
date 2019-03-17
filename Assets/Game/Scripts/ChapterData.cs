@@ -14,6 +14,7 @@ public class ChapterData : ScriptableObject
     {
         public Chapter Title ;
         public float RequiredDHA;
+        [TextArea(1,5)] public List<string> TextResourses;
     }
 }
 

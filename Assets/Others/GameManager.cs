@@ -5,11 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    public ChapterData ChapterData
+    {
+        get
+        {
+            return chapterData;
+        }
+    }
+    public Chapter currentChapter { get; set; }
+
     [SerializeField] ChapterData chapterData;
-    Chapter currentChapter;
 
     private void Awake()
     {
-        SceneManager.sceneLoaded += ((scene, mode) => { }        );
+        SceneManager.sceneLoaded += ((scene, mode) => { });
     }
 }

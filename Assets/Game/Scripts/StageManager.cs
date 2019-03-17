@@ -7,11 +7,11 @@ public class StageManager : MonoSingleton<StageManager>
 {
     SaveData saveData;
     StateManager stateManager;
+    GameManager gameManager;
     TouchGestureDetector touchGestureDetector;
     [SerializeField] ChapterData chapterData;
     [SerializeField] UIManager uIManager;
 
-    Chapter currentChapter;
     float requiredDHA;
     float currentDHA;
 
@@ -19,6 +19,7 @@ public class StageManager : MonoSingleton<StageManager>
     private void Awake()
     {
         stateManager = StateManager.Instance;
+        gameManager = GameManager.Instance;
         touchGestureDetector = TouchGestureDetector.Instance;
 
 
@@ -112,8 +113,8 @@ public class StageManager : MonoSingleton<StageManager>
     void InitializeStage()
     {
         saveData = SaveData.Instance;
-        currentChapter = saveData.ChapterProgress;
-        var chapter = chapterData.ChapterDataList.Find(data => data.Title == currentChapter);
+        gameManager.currentChapter = saveData.ChapterProgress;
+        var chapter = chapterData.ChapterDataList.Find(data => data.Title == gameManager.currentChapter);
         requiredDHA = chapter.RequiredDHA;
         currentDHA = saveData.currentDHA;
 

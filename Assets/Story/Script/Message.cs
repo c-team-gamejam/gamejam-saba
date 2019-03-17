@@ -145,7 +145,7 @@ public class Message : MonoBehaviour
                 {
                     nowTextNum = 0;
                     isEndMessage = true;
-                    //transform.GetChild(0).gameObject.SetActive(false);
+                    transform.GetChild(0).gameObject.SetActive(false);
                     //　それ以外はテキスト処理関連を初期化して次の文字から表示させる
                 }
             }

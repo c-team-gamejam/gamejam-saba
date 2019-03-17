@@ -13,13 +13,12 @@ public class ChapterData : ScriptableObject
     [System.Serializable]
     public class ChapterInfo
     {
-        public Chapter Title ;
+        public Chapter Title;
         public float RequiredDHA;
-        [TextArea(1,5)] public List<string> TextResourses;
-        [TextArea(1,5)] public List<string> YesPatternText;
-        [TextArea(1,5)] public List<string> NoPatternText;
-        public Image StageBackground;
-        public Image Storybackground;
+        [TextArea(1, 5)] public List<string> TextResourses;
+        [TextArea(1, 5)] public List<string> YesPatternText;
+        [TextArea(1, 5)] public List<string> NoPatternText;
+        public Image StoryBackground;
         public Image Saba;
     }
 }
@@ -27,11 +26,14 @@ public class ChapterData : ScriptableObject
 [Flags]
 public enum Chapter
 {
-    One,
-    Two,
-    Three,
-    Four,
-    Five,
-    Six,
-    Seven,
+    One = 1,
+    Two = 2,
+    Three = 4,
+    Four = 8,
+    Five = 16,
+    Six = 32,
+    Seven = 64,
+    BadEnd = 128,
+    NormalEnd = 256,
+    TrueEnd = 512,
 }

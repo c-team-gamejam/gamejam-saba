@@ -13,6 +13,8 @@ public class SceneFader : MonoSingleton<SceneFader>
     static private Canvas m_fadeCanvas;
     /// <summary>フェーディング演出に使うImage</summary>
     private Image m_fadeImage;
+    private Color fadingColor = Color.black;
+
     /// <summary>m_fadeImadeのアルファ値</summary>
     private float m_alpha;
     /// <summary>フェーディング演出に掛ける時間</summary>
@@ -36,7 +38,7 @@ public class SceneFader : MonoSingleton<SceneFader>
 
         // fade用のImage生成
         m_fadeImage = new GameObject("ImageFade").AddComponent<Image>();
-        m_fadeImage.color = Color.black;
+        m_fadeImage.color = Color.white;
         m_fadeImage.transform.SetParent(m_fadeCanvas.transform, false);
         m_fadeImage.rectTransform.anchoredPosition = Vector2.zero;
 
@@ -62,12 +64,25 @@ public class SceneFader : MonoSingleton<SceneFader>
     /// </summary>
     /// <param name="sceneTitle">遷移先のシーンタイトル</param>
     /// <param name="fadeTime">フェーディング処理に掛ける時間</param>
-    public void FadeOut(SceneTitle sceneTitle, float fadeTime = 0f)
+    public void FadeOut(SceneTitle sceneTitle, float fadeTime = 0f,FadeColor color = FadeColor.Black)
     {
         if (fadeTime != 0f)
         {
             m_fadeTime = fadeTime;
         }
+
+        switch (color)
+        {
+            case FadeColor.White:
+                fadingColor = Color.white;
+                break;
+            case FadeColor.Black:
+                fadingColor = Color.black;
+                break;
+            default:
+                break;
+        }
+
         m_nextSceneTitle = sceneTitle.ToString();
         StartCoroutine(FadingOut());
     }
@@ -81,12 +96,12 @@ public class SceneFader : MonoSingleton<SceneFader>
         {
             Init();
         }
-        m_fadeImage.color = Color.black;
+        m_fadeImage.color = Color.white;
         m_alpha = 1f;
-        while (m_alpha < 1f)
+        while (m_alpha > 0f)
         {
-            m_alpha -= Time.deltaTime / m_fadeTime;
-            m_fadeImage.color = new Color(1f, 1f, 1f, m_alpha);
+            m_alpha -= Time.deltaTime * m_fadeTime;
+            m_fadeImage.color = new Color(fadingColor.r, fadingColor.g, fadingColor.b, m_alpha);
             yield return null;
         }
         m_fadeCanvas.enabled = false;
@@ -102,11 +117,12 @@ public class SceneFader : MonoSingleton<SceneFader>
             Init();
         }
         m_fadeCanvas.enabled = true;
+        m_alpha = 0f;
 
         while (m_alpha < 1f)
         {
-            m_alpha += Time.deltaTime / m_fadeTime;
-            m_fadeImage.color = new Color(1f, 1f, 1f, m_alpha);
+            m_alpha += Time.deltaTime * m_fadeTime;
+            m_fadeImage.color = new Color(fadingColor.r, fadingColor.g, fadingColor.b, m_alpha);
             yield return null;
         }
         SceneManager.LoadScene(m_nextSceneTitle);
@@ -129,5 +145,11 @@ public class SceneFader : MonoSingleton<SceneFader>
         GameScene,
         GalleryScene,
         StoryScene,
+    }
+
+    public enum FadeColor
+    {
+        White,
+        Black,
     }
 }

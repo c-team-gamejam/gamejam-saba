@@ -113,86 +113,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &26673960
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 26673961}
-  - component: {fileID: 26673963}
-  - component: {fileID: 26673962}
-  m_Layer: 5
-  m_Name: Clear
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &26673961
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 26673960}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 269477015}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.2501852, y: 0.68643737}
-  m_AnchorMax: {x: 0.70900005, y: 0.7791041}
-  m_AnchoredPosition: {x: 22.04, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &26673962
+--- !u!114 &26673962 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 26673960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 87
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 104
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: "DHA\u304C\u6E9C\u307E\u3063\u305F\u3088\uFF01\uFF01"
---- !u!222 &26673963
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 26673960}
-  m_CullTransparentMesh: 0
---- !u!224 &269477015 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 224256326911683054, guid: e3757bcc09ded5b49aaf1277db7a0c78,
+  m_CorrespondingSourceObject: {fileID: 114253891827229486, guid: e3757bcc09ded5b49aaf1277db7a0c78,
     type: 2}
   m_PrefabInternal: {fileID: 1244169039}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &481097525
 Prefab:
   m_ObjectHideFlags: 0
@@ -442,13 +368,20 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1333302819507266, guid: e3757bcc09ded5b49aaf1277db7a0c78, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 114932252424479010, guid: e3757bcc09ded5b49aaf1277db7a0c78,
+        type: 2}
+      propertyPath: fadingTime
+      value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1499860553310932, guid: e3757bcc09ded5b49aaf1277db7a0c78, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 114101994258783056, guid: e3757bcc09ded5b49aaf1277db7a0c78,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FadingOut
+      objectReference: {fileID: 0}
+    - target: {fileID: 114932252424479010, guid: e3757bcc09ded5b49aaf1277db7a0c78,
+        type: 2}
+      propertyPath: fadeColor
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3757bcc09ded5b49aaf1277db7a0c78, type: 2}
@@ -535,7 +468,7 @@ Prefab:
     - target: {fileID: 114003365245855496, guid: e53d11d25ab14f94587275a4edc86a5a,
         type: 2}
       propertyPath: spawnLate
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e53d11d25ab14f94587275a4edc86a5a, type: 2}

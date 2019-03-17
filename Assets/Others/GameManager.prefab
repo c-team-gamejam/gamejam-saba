@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressTextBox: {fileID: 0}
+  ClearTextBox: {fileID: 0}
 --- !u!114 &114771423355187738
 MonoBehaviour:
   m_ObjectHideFlags: 1

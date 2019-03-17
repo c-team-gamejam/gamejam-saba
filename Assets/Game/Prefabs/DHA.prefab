@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4402125451279670}
   - component: {fileID: 212520266842703392}
   - component: {fileID: 50155580862582270}
-  - component: {fileID: 58146470180867776}
   - component: {fileID: 114451660954951782}
   - component: {fileID: 82337295921904586}
+  - component: {fileID: 58856384902396372}
   m_Layer: 8
   m_Name: DHA
   m_TagString: DHA
@@ -38,8 +38,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1716440142370338}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7, y: -4.52, z: 0.0029146}
-  m_LocalScale: {x: 2.6725, y: 2.6725, z: 2.6725}
+  m_LocalPosition: {x: -0.61, y: 3.29, z: 0.0029146}
+  m_LocalScale: {x: 0.16268843, y: 0.16268843, z: 0.16268843}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -64,7 +64,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58146470180867776
+--- !u!58 &58856384902396372
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,7 +78,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.09
+  m_Radius: 1.7499999
 --- !u!82 &82337295921904586
 AudioSource:
   m_ObjectHideFlags: 1
@@ -221,7 +221,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 4600a5140c60f9d4b836d47928f96c20, type: 3}
   m_Color: {r: 1, g: 0.953694, b: 0.19339621, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -19,7 +19,7 @@ public class ChapterData : ScriptableObject
         [TextArea(1, 5)] public List<string> YesPatternText;
         [TextArea(1, 5)] public List<string> NoPatternText;
         public Image StoryBackground;
-        public Image Saba;
+        public GameObject Saba;
     }
 }
 
@@ -29,11 +29,9 @@ public enum Chapter
     One = 1,
     Two = 2,
     Three = 4,
-    Four = 8,
-    Five = 16,
-    Six = 32,
-    Seven = 64,
-    BadEnd = 128,
-    NormalEnd = 256,
-    TrueEnd = 512,
+    Seven = 8,
+    Four = 16,
+    BadEnd = 32,
+    NormalEnd = 64,
+    TrueEnd = 128,
 }

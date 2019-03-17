@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 95992986696332030}
   m_Layer: 0
   m_Name: Saba_phase5
-  m_TagString: Untagged
+  m_TagString: Saba
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

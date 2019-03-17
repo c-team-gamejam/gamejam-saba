@@ -2,22 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GalleryDateLoad : MonoBehaviour {
-    SaveData Load;
+public class GalleryDateLoad : MonoBehaviour
+{
+    SaveData saveData;
     int flagScore;
-	// Use this for initialization
-	void Start () {
-        SaveData Load =SaveData.Instance;
-        flagScore =Loader();
-        Load.Reload();
-     
+    public bool Trueend;
+    public bool Normalend;
+    public bool Badend;
+    // Use this for initialization
+    void Start()
+    {
+        saveData = SaveData.Instance;
+        GalleryLoader();
+        saveData.Reload();
+        Trueend = false;
+        Normalend = false;
+        Badend = false;
     }
-	
-	// Update is called once per frame
-	public int Loader () {
-        //var MyFlag;
-        return flagScore;
-	}
 
-  
+    // Update is called once per frame
+    public void GalleryLoader()
+    {
+        //var myFlag = saveData.ChapterProgress;
+        var myFlag = Chapter.NormalEnd;
+
+        if (myFlag == (myFlag | Chapter.BadEnd))
+        {
+            Badend = true;
+        }
+        if (myFlag == (myFlag | Chapter.TrueEnd))
+        {
+            Normalend = true;
+        }
+        if (myFlag == (myFlag | Chapter.NormalEnd))
+        {
+            Trueend = true;
+        }
+
+    }
+
+
 }

@@ -10,9 +10,11 @@ public class StageManager : MonoSingleton<StageManager>
     GameManager gameManager;
     TouchGestureDetector touchGestureDetector;
 
+
     [SerializeField] ChapterData chapterData;
     [SerializeField] UIManager uIManager;
     [SerializeField] AudioSource bGM;
+    [SerializeField] GameObject sabaPosition; 
 
     [Header("Parameters")]
     [SerializeField] float delayTime = 2f;

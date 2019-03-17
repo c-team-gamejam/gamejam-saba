@@ -9,11 +9,18 @@ public class StageManager : MonoSingleton<StageManager>
     StateManager stateManager;
     GameManager gameManager;
     TouchGestureDetector touchGestureDetector;
+
     [SerializeField] ChapterData chapterData;
     [SerializeField] UIManager uIManager;
 
+    [Header("Parameters")]
+    [SerializeField] float delayTime = 2f;
+    [SerializeField] float fadingTime = 5f;
+
+
     float requiredDHA;
     float currentDHA;
+
 
 
     private void Awake()
@@ -35,7 +42,6 @@ public class StageManager : MonoSingleton<StageManager>
                 case StateManager.StateMachine.State.InTheGame:
                     break;
                 case StateManager.StateMachine.State.NextStory:
-
                     break;
                 case StateManager.StateMachine.State.Pause:
                     break;
@@ -43,9 +49,6 @@ public class StageManager : MonoSingleton<StageManager>
                     break;
             }
         });
-
-
-
     }
 
     private void Start()
@@ -97,14 +100,14 @@ public class StageManager : MonoSingleton<StageManager>
         {
             stateManager.TransitionState(StateManager.StateMachine.State.NextStory);
             uIManager.DisplayClearText();
-
+            Invoke("FadingStoryScene", delayTime);
         }
-
         Destroy(go);
     }
 
     void FadingStoryScene()
     {
+        SceneFader.Instance.FadeOut(SceneFader.SceneTitle.TitleScene, fadingTime, SceneFader.FadeColor.White);
     }
 
     /// <summary>

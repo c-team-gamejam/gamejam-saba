@@ -42,6 +42,12 @@ public class GameManager : MonoSingleton<GameManager>
             SceneFader.Instance.FadeIn(1f);
         });
     }
+
+    public override void OnInitialize()
+    {
+        base.OnInitialize();
+        DontDestroyOnLoad(gameObject);
+    }
 }
 public enum Pattern
 {

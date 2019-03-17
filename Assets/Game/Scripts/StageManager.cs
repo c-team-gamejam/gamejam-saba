@@ -40,10 +40,6 @@ public class StageManager : MonoSingleton<StageManager>
                     InitializeStage();
                     break;
                 case StateManager.StateMachine.State.InTheGame:
-                    if(saveData.ChapterProgress == (saveData.ChapterProgress | Chapter.Two))
-                    {
-                        Debug.Log("aaa");
-                    }
                     break;
                 case StateManager.StateMachine.State.NextStory:
                     break;
@@ -97,6 +93,8 @@ public class StageManager : MonoSingleton<StageManager>
     void OnTouchedDHA(GameObject go)
     {
         var dha = go.GetComponent<DHA>();
+
+        dha.Play();
         currentDHA += dha.point;
         uIManager.SyncProgress(requiredDHA, currentDHA);
 

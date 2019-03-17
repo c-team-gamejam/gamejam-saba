@@ -9,7 +9,8 @@ public class Message : MonoBehaviour
 
     [SerializeField]
     GameObject image;
-
+    [SerializeField]
+    AudioSource tapsound;
     ButtonScript buttonScript;
 
     //　メッセージUI
@@ -169,9 +170,9 @@ public class Message : MonoBehaviour
             //　メッセージ表示中にマウスの左ボタンを押したら一括表示
             if (Input.GetMouseButtonDown(0))
             {
+                tapsound.Play();
                 //　ここまでに表示しているテキストを代入
                 var allText = messageText.text;
-
                 //　表示するメッセージ文繰り返す
                 for (var i = nowTextNum; i < message.Length; i++)
                 {

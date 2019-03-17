@@ -10,11 +10,14 @@ public class ButtonScript : MonoBehaviour
 
     public void YesButton()
     {
+        Debug.Log("Yes");
         StartCoroutine(message.EachPatternDiplay(Pattern.Good));
     }
 
     public void NoButton()
     {
+        Debug.Log("NO");
+
         StartCoroutine(message.EachPatternDiplay(Pattern.Bad));
     }
     // Update is called once per frame

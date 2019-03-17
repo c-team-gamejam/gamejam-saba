@@ -89,7 +89,20 @@ public class Message : MonoBehaviour
 
     public IEnumerator EachPatternDiplay(Pattern pattern)
     {
-        foreach (var no in noPattern)
+        List<string> textList = new List<string>();
+        switch (pattern)
+        {
+            case Pattern.Good:
+                textList = yesPattern;
+                break;
+            case Pattern.Bad:
+                textList = noPattern;
+                break;
+            default:
+                break;
+        }
+
+        foreach (var no in textList)
         {
             SetMessagePanel(no);
             yield return new WaitUntil(() =>

@@ -15,12 +15,12 @@ public class Scale : MonoBehaviour
         flag = !flag;
         if (flag)
         {
-            iTween.ScaleAdd(gameObject, iTween.Hash("y", 1f, "time", 1f));
+            iTween.ScaleAdd(gameObject, iTween.Hash("y", 2f, "time", 3f));
             image1.SetActive(false);
             image2.SetActive(false);
         }
         else if (!flag) {
-            iTween.ScaleAdd(gameObject, iTween.Hash("y", -1f, "time", 1f));
+            iTween.ScaleAdd(gameObject, iTween.Hash("y", -2f, "time", 3f));
             image1.SetActive(true);
             image2.SetActive(true);
         }

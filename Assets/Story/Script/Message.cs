@@ -55,12 +55,7 @@ public class Message : MonoBehaviour
     IEnumerator DisplayText()
     {
 
-         gameManager = GameManager.Instance;
-         chapterData = gameManager.ChapterData;
-         textList = chapterData.ChapterDataList.Find((chapter) => chapter.Title == gameManager.currentChapter);
-         textScripts = textList.TextResourses;
-         yesPattern = textList.YesPatternText;
-         noPattern = textList.NoPatternText;
+
 
         clickIcon = image.GetComponent<Image>();
         clickIcon.enabled = false;
@@ -125,10 +120,21 @@ public class Message : MonoBehaviour
         return false;
     }
 
-  
 
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+        var saveData = SaveData.Instance;
+        gameManager.currentChapter = saveData.ChapterProgress;
+        chapterData = gameManager.ChapterData;
 
-   public void Start()
+        textList = chapterData.ChapterDataList.Find((chapter) => chapter.Title == gameManager.currentChapter);
+        textScripts = textList.TextResourses;
+        yesPattern = textList.YesPatternText;
+        noPattern = textList.NoPatternText;
+    }
+
+    public void Start()
     {
 
         StartCoroutine(DisplayText());

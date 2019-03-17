@@ -21,10 +21,10 @@ public class DHASpawner : MonoBehaviour
     [SerializeField] float width = 2f;
 
     float elapsedTime;
+    float totalElapsedTime;
 
     private void Awake()
-    {
-        stateManager = StateManager.Instance;
+    {        stateManager = StateManager.Instance;
     }
 
     private void Update()
@@ -35,11 +35,14 @@ public class DHASpawner : MonoBehaviour
         }
 
         elapsedTime += Time.deltaTime;
-        if(spawnLate < elapsedTime)
+        totalElapsedTime += Time.deltaTime;
+        if (spawnLate < elapsedTime)
         {
             var dha = Instantiate(dhaObject, transform);
             dha.transform.localPosition = new Vector3(Random.Range(-width, width), transform.position.y, transform.position.z);
             elapsedTime = 0f;
         }
+
+
     }
 }

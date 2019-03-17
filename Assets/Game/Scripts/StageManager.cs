@@ -112,7 +112,7 @@ public class StageManager : MonoSingleton<StageManager>
 
     void FadingStoryScene()
     {
-        SceneFader.Instance.FadeOut(SceneFader.SceneTitle.TitleScene, fadingTime, SceneFader.FadeColor.White);
+        SceneFader.Instance.FadeOut(SceneFader.SceneTitle.StoryScene, fadingTime, SceneFader.FadeColor.White);
     }
 
     /// <summary>

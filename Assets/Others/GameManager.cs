@@ -12,7 +12,7 @@ public class GameManager : MonoSingleton<GameManager>
             return chapterData;
         }
     }
-    public Chapter currentChapter { get; set; }
+    public Chapter currentChapter { get; set; } 
 
 
     [SerializeField] ChapterData chapterData;

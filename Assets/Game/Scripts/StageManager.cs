@@ -40,6 +40,10 @@ public class StageManager : MonoSingleton<StageManager>
                     InitializeStage();
                     break;
                 case StateManager.StateMachine.State.InTheGame:
+                    if(saveData.ChapterProgress == (saveData.ChapterProgress | Chapter.Two))
+                    {
+                        Debug.Log("aaa");
+                    }
                     break;
                 case StateManager.StateMachine.State.NextStory:
                     break;

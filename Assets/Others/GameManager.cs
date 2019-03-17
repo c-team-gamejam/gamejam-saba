@@ -18,7 +18,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Awake()
     {
-        SceneManager.sceneLoaded += ((scene, mode) => {
+        SceneManager.sceneLoaded += ((scene, mode) =>
+        {
             SceneFader.Instance.FadeIn(1f);
         });
     }

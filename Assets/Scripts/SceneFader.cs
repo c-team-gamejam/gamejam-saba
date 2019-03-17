@@ -86,7 +86,7 @@ public class SceneFader : MonoSingleton<SceneFader>
         while (m_alpha < 1f)
         {
             m_alpha -= Time.deltaTime / m_fadeTime;
-            m_fadeImage.color = new Color(0f, 0f, 0f, m_alpha);
+            m_fadeImage.color = new Color(1f, 1f, 1f, m_alpha);
             yield return null;
         }
         m_fadeCanvas.enabled = false;
@@ -106,7 +106,7 @@ public class SceneFader : MonoSingleton<SceneFader>
         while (m_alpha < 1f)
         {
             m_alpha += Time.deltaTime / m_fadeTime;
-            m_fadeImage.color = new Color(0f, 0f, 0f, m_alpha);
+            m_fadeImage.color = new Color(1f, 1f, 1f, m_alpha);
             yield return null;
         }
         SceneManager.LoadScene(m_nextSceneTitle);

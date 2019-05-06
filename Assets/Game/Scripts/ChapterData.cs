@@ -8,23 +8,23 @@ using System;
 [System.Serializable]
 public class ChapterData : ScriptableObject
 {
-    public List<ChapterInfo> ChapterDataList;
+    public List<Chapter> ChapterDataList;
 
     [System.Serializable]
-    public class ChapterInfo
+    public class Chapter
     {
-        public Chapter Title;
+        public Title Title;
         public float RequiredDHA;
-        [TextArea(1, 5)] public List<string> TextResourses;
-        [TextArea(1, 5)] public List<string> YesPatternText;
-        [TextArea(1, 5)] public List<string> NoPatternText;
-        public Image StoryBackground;
+        [TextArea(1, 5)] public List<string> MainScript;
+        [TextArea(1, 5)] public List<string> GoodPatternScript;
+        [TextArea(1, 5)] public List<string> BadPatternScript;
+        public Sprite StoryBackground;
         public GameObject Saba;
     }
 }
 
 [Flags]
-public enum Chapter
+public enum Title
 {
     One = 1,
     Two = 2,
@@ -34,4 +34,5 @@ public enum Chapter
     BadEnd = 32,
     NormalEnd = 64,
     TrueEnd = 128,
+    Prologue = 256,
 }

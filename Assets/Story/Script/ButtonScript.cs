@@ -14,13 +14,16 @@ public class ButtonScript : MonoBehaviour
         tapsound.Play();
         Debug.Log("Yes");
         StartCoroutine(message.EachPatternDiplay(Pattern.Good));
+        message.ButtonDisplayToggle(false);
     }
+
 
     public void NoButton()
     {
         tapsound.Play();
         Debug.Log("NO");
         StartCoroutine(message.EachPatternDiplay(Pattern.Bad));
+        message.ButtonDisplayToggle(false);
     }
     // Update is called once per frame
     void Update()

@@ -10,6 +10,8 @@ TagManager:
   - Wall
   - Floor
   - Ceiling
+  - TextBox
+  - Button
   layers:
   - Default
   - TransparentFX

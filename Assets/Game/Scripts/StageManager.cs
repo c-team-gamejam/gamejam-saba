@@ -121,8 +121,7 @@ public class StageManager : MonoSingleton<StageManager>
     void InitializeStage()
     {
         saveData = SaveData.Instance;
-        gameManager.currentChapter = saveData.ChapterProgress;
-        var chapter = gameManager.ChapterData.ChapterDataList.Find(data => data.Title == gameManager.currentChapter);
+        var chapter = gameManager.CurrentChapter;
         requiredDHA = chapter.RequiredDHA;
         currentDHA = saveData.currentDHA;
 

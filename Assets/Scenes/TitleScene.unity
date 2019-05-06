@@ -266,7 +266,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 423855158}
-        m_MethodName: FadeToGameScene
+        m_MethodName: FadingOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -320,10 +320,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 423855153}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc999d690184d784dac47dddda60a697, type: 3}
+  m_Script: {fileID: 11500000, guid: 95a346e3584b1a9448ce9a13c52db54f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadingTime: 3
+  fadingTitle: 3
+  fadeColor: 0
+  fadingTime: 2
 --- !u!1 &1322567153
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,7 +522,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1448719583}
-        m_MethodName: FadeToGalleryScene
+        m_MethodName: FadingOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -574,10 +576,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1448719578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc999d690184d784dac47dddda60a697, type: 3}
+  m_Script: {fileID: 11500000, guid: 95a346e3584b1a9448ce9a13c52db54f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadingTime: 3
+  fadingTitle: 2
+  fadeColor: 0
+  fadingTime: 2
 --- !u!1 &1499946423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,7 +1027,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4281a7c6865bd514d8278c1d0643927b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.092
   m_Pitch: 1
   Loop: 0
   Mute: 0

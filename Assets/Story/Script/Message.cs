@@ -44,19 +44,20 @@ public class Message : MonoBehaviour
     //　メッセージをすべて表示したかどうか
     private bool isEndMessage = false;
 
-   
+    public bool SelectFlag { get; set; }
+    [SerializeField] GameObject goodButton;
+    [SerializeField] GameObject badButton;
 
+    SaveData saveData;
     GameManager gameManager;
-    ChapterData chapterData;
-    ChapterData.ChapterInfo textList;
+    ChapterData.Chapter chapterInfo;
     private List<string> textScripts;
     private List<string> yesPattern;
     private List<string> noPattern;
+
+
     IEnumerator DisplayText()
     {
-
-
-
         clickIcon = image.GetComponent<Image>();
         clickIcon.enabled = false;
         messageText = GetComponentInChildren<Text>();
@@ -74,12 +75,27 @@ public class Message : MonoBehaviour
             {
                 if (isEndMessage)
                 {
-                    Debug.Log("true");
                     return true;
                 }
-                Debug.Log("false");
                 return false;
             });
+        }
+        ButtonDisplayToggle(true);
+    }
+
+    public void ButtonDisplayToggle(bool flag)
+    {
+        if(flag)
+        {
+            SelectFlag = true;
+            goodButton.SetActive(true);
+            badButton.SetActive(true);
+        }
+        else
+        {
+            SelectFlag = false;
+            goodButton.SetActive(false);
+            badButton.SetActive(false);
         }
     }
 
@@ -114,34 +130,56 @@ public class Message : MonoBehaviour
         }
     }
 
-    bool Flag()
-    {
-
-        return false;
-    }
-
-
     private void Awake()
     {
         gameManager = GameManager.Instance;
-        var saveData = SaveData.Instance;
-        gameManager.currentChapter = saveData.ChapterProgress;
-        chapterData = gameManager.ChapterData;
-
-        textList = chapterData.ChapterDataList.Find((chapter) => chapter.Title == gameManager.currentChapter);
-        textScripts = textList.TextResourses;
-        yesPattern = textList.YesPatternText;
-        noPattern = textList.NoPatternText;
+        saveData = SaveData.Instance;
     }
 
     public void Start()
     {
-
+        chapterInfo = gameManager.CurrentChapter;
+        textScripts = chapterInfo.MainScript;
+        yesPattern = chapterInfo.GoodPatternScript;
+        noPattern = chapterInfo.BadPatternScript;
         StartCoroutine(DisplayText());
 
+        TouchGestureDetector.Instance.onGestureDetected.AddListener((gesture, touchInfo) =>
+        {
+
+            //　マウスクリックされたら次の文字表示処理
+            if (gesture == TouchGestureDetector.Gesture.Click)
+            {
+                GameObject hitObject;
+                if (touchInfo.HitDetection(out hitObject))
+                {
+                    switch (hitObject.tag)
+                    {
+                        case "Panel":
+                            NextTextPlay();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+
+                //　メッセージが全部表示されていたらゲームオブジェクト自体の削除
+                if (nowTextNum >= message.Length)
+                {
+                    nowTextNum = 0;
+                    isEndMessage = true;
+                    // transform.GetChild(0).gameObject.SetActive(false);
+                }
+            }
+        });
+
     }
-   public void Update()
+
+    public void Update()
     {
+
+
         //　メッセージが終わっていない、または設定されている
         if (isEndMessage || message == null)
         {
@@ -151,10 +189,10 @@ public class Message : MonoBehaviour
         //　1回に表示するメッセージを表示していない	
         if (!isOneMessage)
         {
-
             //　テキスト表示時間を経過したら
             if (elapsedTime >= textSpeed)
             {
+
                 messageText.text += message[nowTextNum];
                 //　改行文字だったら行数を足す
                 if (message[nowTextNum] == '\n')
@@ -166,40 +204,14 @@ public class Message : MonoBehaviour
                 elapsedTime = 0f;
 
                 //　メッセージを全部表示、または行数が最大数表示された
-                if (nowTextNum >= message.Length || textLength >= maxTextLength || nowLine >= maxLine)
+                if (nowTextNum == message.Length || textLength >=maxTextLength || nowLine >= maxLine)
                 {
                     isOneMessage = true;
                 }
             }
             elapsedTime += Time.deltaTime;
 
-            //　メッセージ表示中にマウスの左ボタンを押したら一括表示
-            if (Input.GetMouseButtonDown(0))
-            {
-                tapsound.Play();
-                //　ここまでに表示しているテキストを代入
-                var allText = messageText.text;
-                //　表示するメッセージ文繰り返す
-                for (var i = nowTextNum; i < message.Length; i++)
-                {
-                    allText += message[i];
 
-                    if (message[i] == '\n')
-                    {
-                        nowLine++;
-                    }
-                    nowTextNum++;
-                    textLength++;
-
-                    //　メッセージがすべて表示される、または１回表示限度を超えた時
-                    if (nowTextNum >= message.Length || textLength >= maxTextLength || nowLine >= maxLine)
-                    {
-                        messageText.text = allText;
-                        isOneMessage = true;
-                        break;
-                    }
-                }
-            }
             //　1回に表示するメッセージを表示した
         }
         else
@@ -213,30 +225,48 @@ public class Message : MonoBehaviour
                 clickIcon.enabled = !clickIcon.enabled;
                 elapsedTime = 0f;
             }
+            messageText.text = "";
+            nowLine = 0;
+            clickIcon.enabled = false;
+            elapsedTime = 0f;
+            textLength = 0;
+            isOneMessage = false;
+        }
+    }
 
-            //　マウスクリックされたら次の文字表示処理
-            if (Input.GetMouseButtonDown(0))
+    void NextTextPlay()
+    {
+        if(SelectFlag || (nowTextNum >= message.Length))
+        {
+            return;
+        }
+        tapsound.Play();
+        //　ここまでに表示しているテキストを代入
+        var allText = messageText.text;
+        //　表示するメッセージ文繰り返す
+        for (var i = nowTextNum; i < message.Length; i++)
+        {
+            allText += message[i];
+
+            if (message[i] == '\n')
             {
-                Debug.Log(messageText.text.Length);
-                messageText.text = "";
-                nowLine = 0;
-                clickIcon.enabled = false;
-                elapsedTime = 0f;
-                textLength = 0;
-                isOneMessage = false;
+                nowLine++;
+            }
+            nowTextNum++;
+            textLength++;
 
-
-                //　メッセージが全部表示されていたらゲームオブジェクト自体の削除
-                if (nowTextNum >= message.Length)
-                {
-                    nowTextNum = 0;
-                    isEndMessage = true;
-                    // transform.GetChild(0).gameObject.SetActive(false);
-                    //　それ以外はテキスト処理関連を初期化して次の文字から表示させる
-                }
+            //　メッセージがすべて表示される、または１回表示限度を超えた時
+            if (nowTextNum == message.Length || textLength >= maxTextLength || nowLine >= maxLine)
+            {
+                messageText.text = allText;
+                isOneMessage = true;
+                break;
             }
         }
     }
+
+
+
 
     void SetMessage(string message)
     {

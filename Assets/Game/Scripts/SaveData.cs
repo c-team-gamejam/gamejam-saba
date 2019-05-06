@@ -4,7 +4,6 @@
 //  Created by kan.kikuchi on 2016.11.21.
 
 using UnityEngine;
-
 using System;
 using System.IO;
 using System.Collections.Generic;
@@ -23,10 +22,11 @@ public class SaveData : ISerializationCallbackReceiver
     {
         get
         {
-            if (_instance == null)
+            if (_instance != null)
             {
-                Load();
+                return _instance;
             }
+            Load();
             return _instance;
         }
     }
@@ -39,15 +39,30 @@ public class SaveData : ISerializationCallbackReceiver
     //保存されるデータ(public or SerializeFieldを付ける)
     //=================================================================================
 
-    public Chapter ChapterProgress = Chapter.One;
+    public Title ChapterProgress = Title.Prologue;
+    public Title CurrentChapter = Title.Prologue;
     public float currentDHA;
+    int GoodCount;
+    int BadCount;
 
     /// <summary>
     /// 進捗を追加する
     /// </summary>
-    public void SavingStoryProgress(Chapter chapter)
+    public void SavingStoryProgress(Title chapter,Pattern pattern)
     {
+        switch (pattern)
+        {
+            case Pattern.Good:
+                GoodCount++;
+                break;
+            case Pattern.Bad:
+                BadCount++;
+                break;
+            default:
+                break;
+        }
         ChapterProgress = ChapterProgress | chapter;
+        CurrentChapter  = chapter;
         Save();
     }
 
@@ -71,7 +86,6 @@ public class SaveData : ISerializationCallbackReceiver
     /// </summary>
     public void OnAfterDeserialize()
     {
-
     }
 
     //引数のオブジェクトをシリアライズして返す

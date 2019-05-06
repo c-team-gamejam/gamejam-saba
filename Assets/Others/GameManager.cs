@@ -12,7 +12,17 @@ public class GameManager : MonoSingleton<GameManager>
             return chapterData;
         }
     }
-    public Chapter currentChapter { get; set; } 
+
+    public ChapterData.Chapter CurrentChapter
+    {
+        get
+        {
+            var saveData = SaveData.Instance;
+            Debug.Log(saveData.ChapterProgress);
+            var cChapter = chapterData.ChapterDataList.Find((chapter) => chapter.Title == saveData.CurrentChapter);
+            return cChapter;
+        }
+    }
 
 
     [SerializeField] ChapterData chapterData;

@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     public void SyncProgress(float requiredDHA, float currentDHA)
     {
         var percentage = currentDHA / requiredDHA;
+        percentage = percentage > 100f ? 100f : percentage;
         //progressTextBox.text = currentDHA + " / " + requiredDHA ;
         progressTextBox.text = string.Format("{0:###}/100%", percentage * 100);
     }

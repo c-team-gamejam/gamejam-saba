@@ -24,17 +24,17 @@ public class GalleryDateLoad : MonoBehaviour
     public void GalleryLoader()
     {
         //var myFlag = saveData.ChapterProgress;
-        var myFlag = Chapter.NormalEnd;
+        var myFlag = Title.NormalEnd;
 
-        if (myFlag == (myFlag | Chapter.BadEnd))
+        if (myFlag == (myFlag | Title.BadEnd))
         {
             Badend = true;
         }
-        if (myFlag == (myFlag | Chapter.TrueEnd))
+        if (myFlag == (myFlag | Title.TrueEnd))
         {
             Normalend = true;
         }
-        if (myFlag == (myFlag | Chapter.NormalEnd))
+        if (myFlag == (myFlag | Title.NormalEnd))
         {
             Trueend = true;
         }

@@ -7,19 +7,40 @@ using UnityEngine.UI;
 /// <summary>
 /// Dialogue
 /// </summary>
-public class DialogueSystem : MonoBehaviour
+public class DialogueSystem : MonoSingleton<DialogueSystem>
 {
+    /// <summary>ダイアログ開始時</summary>
+    public event Action OnEnter = () => { };
+    /// <summary>ダイアログ終了時</summary>
+    public event Action OnExit = () => { };
+    /// <summary>ダイアログ中のイベント発生時</summary>
+    public event Action OnEnterEvent = () => { };
+    /// <summary>ダイアログ中のイベント終了時</summary>
+    public event Action OnExitEvent = () => { };
+
+    public bool isPlayingDialogue { get; set; }
+
     /// <summary></summary>
     [SerializeField] Text textBox;
     /// <summary></summary>
     [SerializeField] float waitTimeOfDisplay = 0.5f;
     /// <summary></summary>
-    [SerializeField] List<Button> ButtonList;
+    [SerializeField] List<Button> buttonList;
 
 
-
-    IEnumerator TextDisplay(List<string> textSctipt)
+    public void DisplayText(List<string> script)
     {
+        if (isPlayingDialogue)
+        {
+            return;
+        }
+        StartCoroutine(TextAnimation(script));
+    }
+
+    IEnumerator TextAnimation(List<string> textSctipt)
+    {
+        OnEnter?.Invoke();
+        isPlayingDialogue = true;
         foreach (var text in textSctipt)
         {
             //ContinueTrigger = false;
@@ -29,15 +50,27 @@ public class DialogueSystem : MonoBehaviour
                 textBox.text += character;
                 yield return new WaitForSeconds(waitTimeOfDisplay);
             }
-            //yield return new WaitUntil(() => ContinueTrigger);
+            isPlayingDialogue = false;
+
+            if (TextManager.Instance.TargetSubject == TextManager.Subject.Main)
+            {
+                OnEnterEvent?.Invoke();
+                TextManager.Instance.PlayStory(TextManager.Subject.Choice);
+            }
         }
+        OnExit?.Invoke();
+    }
+
+    public void CallbackExitEvent()
+    {
+        OnExitEvent?.Invoke();
     }
 
     [Flags]
     public enum DialogFlags
     {
         None = 1,
-        Continue = 2,
-        Skip = 4,
+        HasNext = 2,
+        Selection = 4,
     }
 }

@@ -9,6 +9,7 @@ using System;
 public class ChapterData : ScriptableObject
 {
     public List<Chapter> ChapterDataList;
+    public List<ChoiceMaterial> choiceMaterials;
 
     [System.Serializable]
     public class Chapter
@@ -18,9 +19,18 @@ public class ChapterData : ScriptableObject
         [TextArea(1, 5)] public List<string> MainScript;
         [TextArea(1, 5)] public List<string> GoodPatternScript;
         [TextArea(1, 5)] public List<string> BadPatternScript;
+        [TextArea(1, 5)] public List<string> ChoiceScript;
         public Sprite StoryBackground;
         public GameObject Saba;
     }
+}
+
+[Serializable]
+public class ChoiceMaterial
+{
+    Title title;
+    public List<string> choiceScript;
+    int index;
 }
 
 [Flags]

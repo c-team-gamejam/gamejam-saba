@@ -23,32 +23,30 @@ public class DialogueSystem : MonoSingleton<DialogueSystem>
     /// <summary></summary>
     [SerializeField] Text textBox;
     /// <summary></summary>
-    [SerializeField] float waitTimeOfDisplay = 0.5f;
-    /// <summary></summary>
     [SerializeField] List<Button> buttonList;
 
 
-    public void DisplayText(List<string> script)
+    public void DisplayText(List<Script> scripts)
     {
         if (isPlayingDialogue)
         {
             return;
         }
-        StartCoroutine(TextAnimation(script));
+        StartCoroutine(TextAnimation(scripts));
     }
 
-    IEnumerator TextAnimation(List<string> textSctipt)
+    IEnumerator TextAnimation(List<Script> scripts)
     {
         OnEnter?.Invoke();
         isPlayingDialogue = true;
-        foreach (var text in textSctipt)
+        foreach (var script in scripts)
         {
             //ContinueTrigger = false;
             textBox.text = "";
-            foreach (var character in text)
+            foreach (var character in script.Words)
             {
                 textBox.text += character;
-                yield return new WaitForSeconds(waitTimeOfDisplay);
+                yield return new WaitForSeconds(script.t);
             }
             isPlayingDialogue = false;
 

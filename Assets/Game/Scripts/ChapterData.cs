@@ -22,6 +22,7 @@ public class ChapterData : ScriptableObject
         [TextArea(1, 5)] public List<Script> ChoiceScript;
         public Sprite StoryBackground;
         public GameObject Saba;
+        
     }
 }
 

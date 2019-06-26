@@ -9,6 +9,7 @@ using UnityEngine.UI;
 /// </summary>
 public class DialogueSystem : MonoSingleton<DialogueSystem>
 {
+    #region Properties
     /// <summary>ダイアログ開始時</summary>
     public event Action OnEnter = () => { };
     /// <summary>ダイアログ終了時</summary>
@@ -17,28 +18,56 @@ public class DialogueSystem : MonoSingleton<DialogueSystem>
     public event Action OnEnterEvent = () => { };
     /// <summary>ダイアログ中のイベント終了時</summary>
     public event Action OnExitEvent = () => { };
-
-    public bool isPlayingDialogue { get; set; }
-
+    /// <summary>疑似Switch. trueを代入した後、一回だけgetでtrueを返すようにする</summary>
+    public bool EventSwitch
+    {
+        get
+        {
+            if (eventFlag)
+            {
+                eventFlag = false;
+                return true;
+            }
+            return false;
+        }
+        set => eventFlag = value;
+    }
     /// <summary></summary>
+    public bool IsPlayingDialogue { get; set; }
+    #endregion
+    #region Variables
     [SerializeField] Text textBox;
-    /// <summary></summary>
     [SerializeField] List<Button> buttonList;
+    [SerializeField] float eachWaitTimeOfCharacter = 0.25f;
 
-
+    GameManager gm;
+    ChapterData.Chapter targetChapter;
+    bool eventFlag;
+    #endregion
+    #region Methods
+    public void PlayDialogue()
+    {
+        
+    }
+    public void SetActiveEventSwitch(bool isActive) => EventSwitch = isActive;
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="scripts"></param>
     public void DisplayText(List<Script> scripts)
     {
-        if (isPlayingDialogue)
-        {
-            return;
-        }
+        if (IsPlayingDialogue) throw new InvalidOperationException($"今DisplayTextは呼ばれるべきではない.");
         StartCoroutine(TextAnimation(scripts));
     }
-
+    /// <summary>
+    /// テキストアニメーション
+    /// </summary>
+    /// <param name="scripts"></param>
+    /// <returns></returns>
     IEnumerator TextAnimation(List<Script> scripts)
     {
         OnEnter?.Invoke();
-        isPlayingDialogue = true;
+        IsPlayingDialogue = true;
         foreach (var script in scripts)
         {
             //ContinueTrigger = false;
@@ -46,24 +75,29 @@ public class DialogueSystem : MonoSingleton<DialogueSystem>
             foreach (var character in script.Words)
             {
                 textBox.text += character;
-                yield return new WaitForSeconds(script.EachWaitTimeOfCharacter);
+                yield return new WaitForSeconds(eachWaitTimeOfCharacter);
             }
-            isPlayingDialogue = false;
-
-            if (TextManager.Instance.TargetSubject == TextManager.Subject.Main)
+            yield return new WaitUntil(() =>
             {
-                OnEnterEvent?.Invoke();
-                TextManager.Instance.PlayStory(TextManager.Subject.Choice);
-            }
+                Debug.Log("Check event");
+                return EventSwitch;
+            });
         }
+        IsPlayingDialogue = false;
         OnExit?.Invoke();
     }
-
-    public void CallbackExitEvent()
+    #endregion
+    #region Callbacks
+    private void Awake()
     {
-        OnExitEvent?.Invoke();
+        gm = GameManager.Instance;
     }
-
+    private void Start()
+    {
+        targetChapter = gm.CurrentChapter;
+    }
+    #endregion
+    #region Enums
     [Flags]
     public enum DialogFlags
     {
@@ -71,4 +105,12 @@ public class DialogueSystem : MonoSingleton<DialogueSystem>
         HasNext = 2,
         Selection = 4,
     }
+    public enum Subject
+    {
+        Main,
+        Choice,
+        Good,
+        Bad,
+    }
+    #endregion
 }

@@ -45,10 +45,7 @@ public class SaveData : ISerializationCallbackReceiver
     int GoodCount;
     int BadCount;
 
-    /// <summary>
-    /// 進捗を追加する
-    /// </summary>
-    public void SavingStoryProgress(Title chapter,Pattern pattern)
+    public void AddCount(Pattern pattern)
     {
         switch (pattern)
         {
@@ -61,6 +58,14 @@ public class SaveData : ISerializationCallbackReceiver
             default:
                 break;
         }
+        Save();
+    }
+
+    /// <summary>
+    /// 進捗を追加する
+    /// </summary>
+    public void SavingStoryProgress(Title chapter)
+    {
         ChapterProgress = ChapterProgress | chapter;
         CurrentChapter  = chapter;
         Save();

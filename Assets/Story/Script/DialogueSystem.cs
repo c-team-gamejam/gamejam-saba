@@ -46,7 +46,7 @@ public class DialogueSystem : MonoSingleton<DialogueSystem>
             foreach (var character in script.Words)
             {
                 textBox.text += character;
-                yield return new WaitForSeconds(script.t);
+                yield return new WaitForSeconds(script.EachWaitTimeOfCharacter);
             }
             isPlayingDialogue = false;
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f5df92d12f07d45a4fcfb96e1b36d8, type: 3}
   m_Name: Display Node
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 11400000}
   position: {x: 550, y: -50}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3dd50b389073b148b5ec10e419dc073, type: 3}
   m_Name: Input Node
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 11400000}
   position: {x: -350, y: -150}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3dd50b389073b148b5ec10e419dc073, type: 3}
   m_Name: Input Node
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 11400000}
   position: {x: -50, y: 50}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3dd50b389073b148b5ec10e419dc073, type: 3}
   m_Name: Input Node
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 11400000}
   position: {x: -350, y: -50}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a65ad2b155f0d40838ed81292e4df7, type: 3}
   m_Name: Calc Node
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 11400000}
   position: {x: -65, y: -119.8}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f5df92d12f07d45a4fcfb96e1b36d8, type: 3}
   m_Name: Display Node
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 11400000}
   position: {x: 250, y: -150}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a65ad2b155f0d40838ed81292e4df7, type: 3}
   m_Name: Calc Node
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 11400000}
   position: {x: 250, y: -50}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}

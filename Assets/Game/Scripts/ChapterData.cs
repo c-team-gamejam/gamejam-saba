@@ -16,10 +16,10 @@ public class ChapterData : ScriptableObject
     {
         public Title Title;
         public float RequiredDHA;
-        [TextArea(1, 5)] public List<string> MainScript;
-        [TextArea(1, 5)] public List<string> GoodPatternScript;
-        [TextArea(1, 5)] public List<string> BadPatternScript;
-        [TextArea(1, 5)] public List<string> ChoiceScript;
+        [TextArea(1, 5)] public List<Script> MainScript;
+        [TextArea(1, 5)] public List<Script> GoodPatternScript;
+        [TextArea(1, 5)] public List<Script> BadPatternScript;
+        [TextArea(1, 5)] public List<Script> ChoiceScript;
         public Sprite StoryBackground;
         public GameObject Saba;
     }
